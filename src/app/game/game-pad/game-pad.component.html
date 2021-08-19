@@ -1,0 +1,23 @@
+<div class="game-pad" *ngIf="inputs">
+  <form [formGroup]="form" #myForm="ngForm" (ngSubmit)="save()">
+    <nz-select formControlName="controllerId" [nzSize]="'small'" *ngIf="gamepadList.length > 0">
+      <nz-option [nzValue]="item?.id" [nzLabel]="item?.id | formatGamepadName" *ngFor="let item of gamepadList"></nz-option>
+    </nz-select>
+  </form>
+  <app-game-pad-button class="btn-a" [ngClass]="{ 'map': isBind(buttonsEnum.BTN_A), 'release': isRelease(buttonsEnum.BTN_A) }" (click)="bindButton(buttonsEnum.BTN_A)" [btnStyle]="1"></app-game-pad-button>
+  <app-game-pad-button class="btn-b" [ngClass]="{ 'map': isBind(buttonsEnum.BTN_B), 'release': isRelease(buttonsEnum.BTN_B) }" (click)="bindButton(buttonsEnum.BTN_B)" [btnStyle]="1"></app-game-pad-button>
+  <app-game-pad-button class="btn-select" [ngClass]="{ 'map': isBind(buttonsEnum.BTN_SELECT), 'release': isRelease(buttonsEnum.BTN_SELECT) }" (click)="bindButton(buttonsEnum.BTN_SELECT)" [btnStyle]="2"></app-game-pad-button>
+  <app-game-pad-button class="btn-start" [ngClass]="{ 'map': isBind(buttonsEnum.BTN_START), 'release': isRelease(buttonsEnum.BTN_START) }" (click)="bindButton(buttonsEnum.BTN_START)" [btnStyle]="2"></app-game-pad-button>
+  <app-game-pad-button class="btn-up" [ngClass]="{ 'map': isBind(buttonsEnum.BTN_UP), 'release': isRelease(buttonsEnum.BTN_UP) }" (click)="bindButton(buttonsEnum.BTN_UP)" [btnStyle]="3"></app-game-pad-button>
+  <app-game-pad-button class="btn-down" [ngClass]="{ 'map': isBind(buttonsEnum.BTN_DOWN), 'release': isRelease(buttonsEnum.BTN_DOWN) }" (click)="bindButton(buttonsEnum.BTN_DOWN)" [btnStyle]="3"></app-game-pad-button>
+  <app-game-pad-button class="btn-left" [ngClass]="{ 'map': isBind(buttonsEnum.BTN_LEFT), 'release': isRelease(buttonsEnum.BTN_LEFT) }" (click)="bindButton(buttonsEnum.BTN_LEFT)" [btnStyle]="3"></app-game-pad-button>
+  <app-game-pad-button class="btn-right" [ngClass]="{ 'map': isBind(buttonsEnum.BTN_RIGHT), 'release': isRelease(buttonsEnum.BTN_RIGHT) }" (click)="bindButton(buttonsEnum.BTN_RIGHT)" [btnStyle]="3"></app-game-pad-button>
+  <div class="game-pad-note">
+    <p><em>Connect Gamepad and press any key to connect</em></p>
+    <p *ngIf="listKeyboard.length > 0">
+      <ng-template ngFor let-btn [ngForOf]="listKeyboard">
+      {{ btn.getKeyDisplay() }}: <button nz-button nzType="default" nzSize="small">{{ btn.getValueDisplay() }}</button>
+      </ng-template>
+    </p>
+  </div>
+</div>

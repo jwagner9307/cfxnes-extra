@@ -1,0 +1,39 @@
+#nesBoard {
+  position: relative;
+  background-color: #000000;
+  text-align: center;
+  padding: 40px;
+  canvas {
+    aspect-ratio: auto 768 / 720;
+    display: block;
+    margin: auto;
+  }
+  nz-button-group {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    margin-left: -58px;
+    z-index: 99999;
+  }
+  #nesFPS {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 10px;
+    color: chartreuse;
+    text-align: left;
+  }
+}
+
+.rom-thumb {
+  border: 0;
+  background: none transparent;
+  padding: 0;
+  cursor: pointer;
+  margin: 5px;
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}
+

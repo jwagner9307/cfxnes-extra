@@ -1,0 +1,67 @@
+<div nz-row [nzGutter]="[16, 24]">
+  <div nz-col [nzSpan]="24" class="gutter-row">
+    <div id="nesBoard">
+      <nz-button-group>
+        <button nz-button nzSize="small" nzType="default" (click)="modalOpenRomShow()">
+          <i nz-icon nzType="folder-open" nzTheme="outline"></i>
+        </button>
+        <button nz-button nzSize="small" nzType="default" (click)="start()">
+          <i nz-icon nzType="play-circle" nzTheme="outline"></i>
+        </button>
+        <button nz-button nzSize="small" nzType="default" (click)="stop()">
+          <i nz-icon nzType="border" nzTheme="outline"></i>
+        </button>
+        <button nz-button nzSize="small" nzType="default" (click)="reset()">
+          <i nz-icon nzType="reload" nzTheme="outline"></i>
+        </button>
+        <button nz-button nzSize="small" [nzType]="isEnabledAudio ? 'primary' : 'default'" (click)="toogleAudio()">
+          <i nz-icon nzType="sound" nzTheme="outline" *ngIf="isEnabledAudio"></i>
+          <i nz-icon nzType="audio-muted" nzTheme="outline" *ngIf="!isEnabledAudio"></i>
+        </button>
+        <button nz-button nzSize="small" nzType="default" (click)="toggleFullscreen()">
+          <i nz-icon nzType="fullscreen" nzTheme="outline"></i>
+        </button>
+        <button nz-button nzSize="small" nzType="default" (click)="author()">
+          <i nz-icon nzType="info-circle" nzTheme="outline"></i>
+        </button>
+      </nz-button-group>
+      <canvas #cfxnesBoard width="768" height="720"></canvas>
+      <div id="nesFPS">
+        VER: {{ cfxnes?.version }} <span [hidden]="!rom.loaded">- FPS: {{ nes?.fps | number : '1.0-0' }}<br/></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div nz-row [nzGutter]="[16, 24]">
+  <div nz-col [nzSpan]="12" class="gutter-row">
+    <app-game-pad [inputs]="inputs" [port]="1"></app-game-pad>
+  </div>
+  <div nz-col [nzSpan]="12" class="gutter-row">
+    <app-game-pad [inputs]="inputs" [port]="2"></app-game-pad>
+  </div>
+</div>
+
+<input type="file" #inputRom [hidden]="true" (change)="openRom($event)">
+
+<nz-modal [(nzVisible)]="modalOpenRom" nzTitle="Choice Roms" (nzOnCancel)="modalOpenRomCancel()">
+  <ng-container *nzModalContent>
+    <button type="button" class="rom-thumb" *ngFor="let item of gamelistData" (click)="loadRom(item.file)">
+      <img [src]="item.thumb" nz-tooltip nzTooltipTitle="{{ item.title }}">
+    </button>
+    <p>
+      From
+      <em><a href="https://romhustler.org/roms/nes" target="_blank">Romhustler</a></em> |
+      <em><a href="https://www.retrogames.cz/" target="_blank">Retrogames</a></em> |
+      <em><a href="https://www.romspedia.com/roms/nintendo" target="_blank">Romspedia</a></em>
+    </p>
+  </ng-container>
+  <div *nzModalFooter>
+    <span *ngIf="loadingRom">Loading room...</span>
+    <button nz-button nzType="primary" (click)="triggerOpenRom()" [disabled]="loadingRom">
+      <i nz-icon nzType="cloud-upload" nzTheme="outline"></i> Open from computer
+    </button>
+    <button nz-button nzType="default" (click)="modalOpenRomCancel()" [disabled]="loadingRom">Close</button>
+  </div>
+</nz-modal>
+

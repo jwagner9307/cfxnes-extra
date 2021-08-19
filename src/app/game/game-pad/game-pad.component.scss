@@ -1,0 +1,71 @@
+.game-pad {
+  width: 516px;
+  height: 217px;
+  background: url('../../../assets/imgs/gamepad/bg.png') no-repeat;
+  margin: 30px auto;
+  position: relative;
+  .ant-select {
+    display: block;
+    min-width: 350px;
+  }
+  app-game-pad-button {
+    position: absolute;
+    &.btn-a {
+      top: 134px;
+      right: 63px;
+    }
+    &.btn-b {
+      top: 134px;
+      right: 132px;
+    }
+    &.btn-select {
+      top: 145px;
+      left: 185px;
+    }
+    &.btn-start {
+      top: 145px;
+      left: 255px;
+    }
+    &.btn-up {
+      top: 85px;
+      left: 80px;
+    }
+    &.btn-down {
+      top: 148px;
+      left: 80px;
+      -ms-transform: rotate(180deg); /* IE 9 */
+      transform: rotate(180deg);
+    }
+    &.btn-left {
+      top: 116px;
+      left: 48px;
+      -ms-transform: rotate(-90deg); /* IE 9 */
+      transform: rotate(-90deg);
+    }
+    &.btn-right {
+      top: 116px;
+      left: 113px;
+      -ms-transform: rotate(90deg); /* IE 9 */
+      transform: rotate(90deg);
+    }
+  }
+  .game-pad-note {
+    position: absolute;
+    bottom: -50px;
+    height: 46px;
+    left: 0;
+    display: block;
+    font-size: 10px;
+    p {
+      margin: 0;
+      margin-bottom: 5px;
+    }
+    .ant-btn-sm {
+      font-size: 10px;
+      height: 20px;
+      padding: 0;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+}

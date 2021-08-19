@@ -1,0 +1,47 @@
+:host {
+  button {
+    border: none;
+    cursor: pointer;
+    &.btn-1 {
+      width: 42px;
+      height: 42px;
+      background: url('../../../../assets/imgs/gamepad/btn-1.png') no-repeat;
+    }
+    &.btn-2 {
+      width: 40px;
+      height: 17px;
+      background: url('../../../../assets/imgs/gamepad/btn-2.png') no-repeat;
+    }
+    &.btn-3 {
+      width: 20px;
+      height: 18px;
+      background: url('../../../../assets/imgs/gamepad/btn-3.png') no-repeat;
+    }
+  }
+  &.map {
+    button {
+      &.btn-1 {
+        background: url('../../../../assets/imgs/gamepad/btn-1-map.png') no-repeat;
+      }
+      &.btn-2 {
+        background: url('../../../../assets/imgs/gamepad/btn-2-map.png') no-repeat;
+      }
+      &.btn-3 {
+        background: url('../../../../assets/imgs/gamepad/btn-3-map.png') no-repeat;
+      }
+    }
+  }
+  &.release {
+    button {
+      &.btn-1 {
+        background: url('../../../../assets/imgs/gamepad/btn-1-release.png') no-repeat;
+      }
+      &.btn-2 {
+        background: url('../../../../assets/imgs/gamepad/btn-2-release.png') no-repeat;
+      }
+      &.btn-3 {
+        background: url('../../../../assets/imgs/gamepad/btn-3-release.png') no-repeat;
+      }
+    }
+  }
+}

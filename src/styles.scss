@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  background-color: #000000;
+  color: #dcdcdc;
+  margin: 20px;
+  overflow-x: hidden;
+}
+
+.cdk-overlay-container {
+  z-index: 9999;
+}
